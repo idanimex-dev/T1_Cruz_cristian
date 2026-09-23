@@ -1,0 +1,39 @@
+@model IEnumerable<POOI_T1_Cruz.Models.Empleado>
+
+@{
+    ViewBag.Title = "Planilla";
+}
+
+<h2>Planilla</h2>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Hijos</th>
+        <th>Contrato</th>
+        <th>Sueldo Básico</th>
+        <th>Escolaridad</th>
+        <th>Bonificación</th>
+        <th>Monto a Pagar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.idEmpleado</td>
+            <td>@item.nomapeEmpleado</td>
+            <td>@item.categoriaEmpleado</td>
+            <td>@item.nHijos</td>
+            <td>@item.tipoContrato</td>
+            <td>@item.SueldoBasico()</td>
+            <td>@item.Escolaridad()</td>
+            <td>@item.Bonificacion()</td>
+            <td>@item.MontoAPagar()</td>
+        </tr>
+    }
+</table>
+
+<p>@Html.ActionLink("Registrar Empleado", "RegistrarEmpleado")</p>
+<p>@Html.ActionLink("Registrar Administrativo", "RegistrarAdministrativo")</p>

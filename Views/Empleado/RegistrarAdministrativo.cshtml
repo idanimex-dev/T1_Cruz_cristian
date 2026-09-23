@@ -1,0 +1,67 @@
+@model POOI_T1_Cruz.Models.Administrativo
+
+@{
+    ViewBag.Title = "Registrar Administrativo";
+}
+
+<h2>Registrar Administrativo</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.idEmpleado)
+        @Html.TextBoxFor(m => m.idEmpleado)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.nomapeEmpleado)
+        @Html.TextBoxFor(m => m.nomapeEmpleado)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.categoriaEmpleado)
+        @Html.DropDownListFor(m => m.categoriaEmpleado,
+            new SelectList(new[] { "E1", "E2", "E3", "E4" }))
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.nHijos)
+        @Html.TextBoxFor(m => m.nHijos)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.tipoContrato)
+        @Html.DropDownListFor(m => m.tipoContrato,
+            new SelectList(new[] { "Indefinido", "Contratado" }))
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.anioIngreso)
+        @Html.TextBoxFor(m => m.anioIngreso)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.postGrado)
+        @Html.DropDownListFor(m => m.postGrado,
+            new SelectList(new[]
+            {
+                new { Value = "true", Text = "Sí" },
+                new { Value = "false", Text = "No" }
+            }, "Value", "Text"))
+    </p>
+
+    <input type="submit" value="Registrar" />
+}
+
+@if (ViewBag.SueldoBasico != null)
+{
+    <h3>Resultados</h3>
+    <p>Sueldo Básico: @ViewBag.SueldoBasico</p>
+    <p>Escolaridad: @ViewBag.Escolaridad</p>
+    <p>Bonificación: @ViewBag.Bonificacion</p>
+    <p>Incentivo: @ViewBag.Incentivo</p>
+    <p>Monto a Pagar: @ViewBag.MontoAPagar</p>
+}
+
+<p>@Html.ActionLink("Registrar Empleado", "RegistrarEmpleado")</p>
+<p>@Html.ActionLink("Ver Planilla", "Planilla")</p>
